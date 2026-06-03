@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>나의 잠재적 천재성 진단 (Genius Radar)</title>
+    <link>https://genius-radar.vercel.app/</link>
+    <description>당신이 숨겨둔 1%의 천재성은 무엇일까요? 다차원 지능 분석을 통해 당신만의 독보적인 재능 영역과 활성화 방안을 확인해 드립니다.</description>
+    <language>ko</language>
+    <lastBuildDate>Wed, 03 Jun 2026 07:48:52 GMT</lastBuildDate>
+    <category>천재성, 잠재력, 지능테스트, 성향테스트, 역량분석</category>
+    <atom:link href="https://genius-radar.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>나의 잠재적 천재성 진단 (Genius Radar) — 천재성 진단 시작하기</title>
+    <link>https://genius-radar.vercel.app/</link>
+    <description><![CDATA[당신이 숨겨둔 1%의 천재성은 무엇일까요? 다차원 지능 분석을 통해 당신만의 독보적인 재능 영역과 활성화 방안을 확인해 드립니다.]]></description>
+    <pubDate>Wed, 03 Jun 2026 07:48:52 GMT</pubDate>
+    <guid isPermaLink="true">https://genius-radar.vercel.app/</guid>
+  </item>
+  <item>
+    <title>🔮 독보적인 통찰형 마스터 (Mastermind) — 천재성 진단 유형 분석</title>
+    <link>https://genius-radar.vercel.app/?persona=%EB%8F%85%EB%B3%B4%EC%A0%81%EC%9D%B8%20%ED%86%B5%EC%B0%B0%ED%98%95%20%EB%A7%88%EC%8A%A4%ED%84%B0%20(Mastermind)</link>
+    <description><![CDATA[압도적인 입체적 통찰과 실행력으로 미래 패러다임을 설계하는 지략가 | 당신은 이성과 감성, 그리고 거시적 안목이 완벽히 조화된 독보적인 마스터 유형입니다. 남들이 보지 못하는 틈새를 찾아 비즈니스 모델로 실현하는 데 탁월한 재능이 있습니다.]]></description>
+    <pubDate>Wed, 03 Jun 2026 07:48:52 GMT</pubDate>
+    <guid isPermaLink="false">https://genius-radar.vercel.app#%EB%8F%85%EB%B3%B4%EC%A0%81%EC%9D%B8%20%ED%86%B5%EC%B0%B0%ED%98%95%20%EB%A7%88%EC%8A%A4%ED%84%B0%20(Mastermind)</guid>
+  </item>
+  <item>
+    <title>🧮 실용적 융합형 전략가 (Strategist) — 천재성 진단 유형 분석</title>
+    <link>https://genius-radar.vercel.app/?persona=%EC%8B%A4%EC%9A%A9%EC%A0%81%20%EC%9C%B5%ED%95%A9%ED%98%95%20%EC%A0%84%EB%9E%B5%EA%B0%80%20(Strategist)</link>
+    <description><![CDATA[이성과 실행력의 최적 밸런스로 현실의 문제를 푸는 전천후 해결사 | 당신은 실리와 균형 감각을 겸비한 훌륭한 전략가입니다. 현실의 복잡한 제한 사항을 영리하게 수용하여 가성비가 가장 뛰어난 최적의 대안을 빠르게 돌파해 냅니다.]]></description>
+    <pubDate>Wed, 03 Jun 2026 07:48:52 GMT</pubDate>
+    <guid isPermaLink="false">https://genius-radar.vercel.app#%EC%8B%A4%EC%9A%A9%EC%A0%81%20%EC%9C%B5%ED%95%A9%ED%98%95%20%EC%A0%84%EB%9E%B5%EA%B0%80%20(Strategist)</guid>
+  </item>
+  <item>
+    <title>🌱 잠재력 가득한 성장형 원석 (Rising Spark) — 천재성 진단 유형 분석</title>
+    <link>https://genius-radar.vercel.app/?persona=%EC%9E%A0%EC%9E%AC%EB%A0%A5%20%EA%B0%80%EB%93%9D%ED%95%9C%20%EC%84%B1%EC%9E%A5%ED%98%95%20%EC%9B%90%EC%84%9D%20(Rising%20Spark)</link>
+    <description><![CDATA[아직 핵심 천재성이 가려져 있지만 무한한 진화 여백을 지닌 촉매자 | 당신은 아직 자신만의 1% 고유 무기를 필드에서 온전히 휘두르지 못한 원석 상태입니다. 올바른 멘토와 심리적 안전감을 얻으면 언제든 폭발적인 성취를 찍어낼 수 있는 무서운 가능성의 소유자입니다.]]></description>
+    <pubDate>Wed, 03 Jun 2026 07:48:52 GMT</pubDate>
+    <guid isPermaLink="false">https://genius-radar.vercel.app#%EC%9E%A0%EC%9E%AC%EB%A0%A5%20%EA%B0%80%EB%93%9D%ED%95%9C%20%EC%84%B1%EC%9E%A5%ED%98%95%20%EC%9B%90%EC%84%9D%20(Rising%20Spark)</guid>
+  </item>
+  </channel>
+</rss>
