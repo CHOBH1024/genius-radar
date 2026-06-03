@@ -11,6 +11,8 @@ const TeamSynergyDashboard = lazy(() => import('./components/TeamSynergyDashboar
 const AdminPanel = lazy(() => import('./components/AdminPanel').then(module => ({ default: module.AdminPanel })));
 const ColumnLounge = lazy(() => import('./components/ColumnLounge').then(module => ({ default: module.ColumnLounge })));
 
+import { AdsensePassSection } from './components/AdsensePassSection';
+
 // Simple state machine for routing
 type AppState = 'dashboard' | 'intro' | 'engine' | 'analyzing' | 'results' | 'team' | 'admin' | 'columns';
 
@@ -93,10 +95,13 @@ export default function App() {
 
       <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-slate-500 font-semibold tracking-widest animate-pulse">LOADING...</div>}>
         {appState === 'dashboard' && (
-          <Dashboard 
-            onSelectSurvey={handleSelectSurvey} 
-            onNavigate={(route) => setAppState(route)} 
-          />
+          <>
+            <Dashboard 
+              onSelectSurvey={handleSelectSurvey} 
+              onNavigate={(route) => setAppState(route)} 
+            />
+            <AdsensePassSection />
+          </>
         )}
         
         {appState === 'team' && <TeamSynergyDashboard onBack={handleHome} />}
