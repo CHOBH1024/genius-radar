@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://genius-radar.vercel.app/sitemap.xml
