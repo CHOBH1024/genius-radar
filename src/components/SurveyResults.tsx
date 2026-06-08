@@ -34,10 +34,10 @@ const CARD_PATTERNS = [
 ];
 
 const VIRAL_PHRASES = [
-  (p: string) => `나 오늘 Mirror Insight 해봤는데 "${p}" 나왔어 ㅋㅋ 너무 소름 🤯 너도 해봐`,
-  (p: string) => `"${p}" 판정받고 팩폭 실화냐... 완전 내 얘기잖아 😭 mirrorinsight.kr`,
-  (p: string) => `친구야 나 "${p}" 유형이래 ㅋㅋㅋ 너는 뭐 나오는지 해봐 → mirrorinsight.kr`,
-  (p: string) => `MBTI는 이제 구식 🙅 Mirror Insight에서 "${p}" 받음 완전 신기 해봐요`,
+  (p: string) => `나 오늘 Genius Radar 해봤는데 "${p}" 나왔어 ㅋㅋ 너무 소름 🤯 너도 해봐`,
+  (p: string) => `"${p}" 판정받고 팩폭 실화냐... 완전 내 얘기잖아 😭 genius-radar.vercel.app`,
+  (p: string) => `친구야 나 "${p}" 천재래 ㅋㅋㅋ 너는 뭐 나오는지 해봐 → genius-radar.vercel.app`,
+  (p: string) => `단점을 뒤집으면 천재성이라구 🙅 Genius Radar에서 "${p}" 받음 완전 신기 해봐요`,
 ];
 
 const CELEB_ARCHETYPES = [
@@ -201,23 +201,23 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
 
   const handleCopyLink = () => {
     const mockHash = Math.random().toString(36).substring(2, 8).toUpperCase();
-    const url = `https://mirrorinsight.kr/result/${mockHash}`;
+    const url = `https://genius-radar.vercel.app/result/${mockHash}`;
     navigator.clipboard.writeText(url);
     showToast('✨ 링크가 복사되었습니다!');
   };
 
   const handleTwitterShare = () => {
     const text = encodeURIComponent(`나는 "${resultData.persona}" 유형!\n"${resultData.headline}"\n\n당신은 어떤 유형인지 알아보세요 👇`);
-    const tags = encodeURIComponent('MirrorInsight,성향테스트,팩트폭행');
-    window.open(`https://twitter.com/intent/tweet?text=${text}&hashtags=${tags}&url=${encodeURIComponent('https://mirrorinsight.kr')}`, '_blank');
+    const tags = encodeURIComponent('GeniusRadar,다중지능,천재성발견');
+    window.open(`https://twitter.com/intent/tweet?text=${text}&hashtags=${tags}&url=${encodeURIComponent('https://genius-radar.vercel.app')}`, '_blank');
   };
 
   const handleKakaoShare = () => {
     const phrase = VIRAL_PHRASES[phraseIdx](resultData.persona);
     if (navigator.share) {
-      navigator.share({ title: `Mirror Insight: ${resultData.persona}`, text: phrase, url: 'https://mirrorinsight.kr' });
+      navigator.share({ title: `Genius Radar: ${resultData.persona}`, text: phrase, url: 'https://genius-radar.vercel.app' });
     } else {
-      navigator.clipboard.writeText(phrase + '\nhttps://mirrorinsight.kr');
+      navigator.clipboard.writeText(phrase + '\nhttps://genius-radar.vercel.app');
       showToast('💬 카카오톡 공유 문구가 복사되었습니다!');
     }
   };
@@ -227,7 +227,7 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
     showToast('📝 바이럴 문구가 복사되었습니다!');
   };
 
-  const resultUrl = `https://mirrorinsight.kr/result/${resultData.persona.replace(/\s/g, '_')}`;
+  const resultUrl = `https://genius-radar.vercel.app/result/${resultData.persona.replace(/\s/g, '_')}`;
 
   const cardBg = cardDark
     ? `linear-gradient(145deg, rgba(0,0,0,0.75), rgba(0,0,0,0.6)), linear-gradient(135deg, ${cardTheme.from}18, ${cardTheme.to}18)`
@@ -359,7 +359,7 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
                 <QRCodeSVG value={resultUrl} size={64} bgColor="#ffffff" fgColor="#0f172a" level="M" />
               </div>
             )}
-            <p className={`text-[9px] font-black uppercase tracking-[0.4em] ${cardDark ? 'text-white/30' : 'text-black/30'}`}>Mirror Insight</p>
+            <p className={`text-[9px] font-black uppercase tracking-[0.4em] ${cardDark ? 'text-white/30' : 'text-black/30'}`}>GENIUS RADAR</p>
           </motion.div>
         </motion.div>
 

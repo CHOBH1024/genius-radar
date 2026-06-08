@@ -1,7 +1,7 @@
 import { SurveyConfig } from '../types';
 import { ArrowLeft, Clock, BookOpen, Tag, ChevronRight } from 'lucide-react';
 import { themeMap } from '../theme';
-import { blogPosts } from '../data/blogPosts';
+import { seoPosts } from '../data/seoContent';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 
@@ -13,7 +13,7 @@ interface SurveyIntroProps {
 
 export const SurveyIntro = ({ survey, onBack, onStart }: SurveyIntroProps) => {
   const t = themeMap[survey.color] || themeMap['blue'];
-  const post = blogPosts[survey.id];
+  const post = seoPosts[0]; // genius-radar uses the first seoPost
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -113,7 +113,7 @@ export const SurveyIntro = ({ survey, onBack, onStart }: SurveyIntroProps) => {
         <div className="flex-1 px-6 py-12 relative z-0">
           <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-10 pb-5 border-b border-slate-200 dark:border-slate-800">
             <span className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</span>
-            <span className="flex items-center gap-1.5"><BookOpen size={12} /> Mirror Insight Column</span>
+            <span className="flex items-center gap-1.5"><BookOpen size={12} /> Genius Radar Column</span>
           </div>
 
           <div className="space-y-16">

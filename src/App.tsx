@@ -31,14 +31,16 @@ export default function App() {
         const survey = surveys[0];
         if (survey) {
           // 해당 페르소나 이름에 매핑되는 점수 역산 (100점부터 0점까지 하향 탐색)
-          let targetAvg = 50; 
-          for (let score = 100; score >= 0; score -= 2) {
+          let targetTypeIndex = 0;
+          for (let i = 0; i < survey.categories.length; i++) {
             try {
-              const res = survey.getResultContent(score, Array(survey.categories.length).fill(score));
+              const mockCats = Array(survey.categories.length).fill(0);
+              mockCats[i] = 100; // Force this type to be the max
+              const res = survey.getResultContent(50, mockCats);
               const cleanResPersona = res.persona.replace(/\s+/g, '_');
               const cleanParamPersona = personaParam.replace(/\s+/g, '_');
               if (cleanResPersona === cleanParamPersona || res.persona === personaParam) {
-                targetAvg = score;
+                targetTypeIndex = i;
                 break;
               }
             } catch (e) {
@@ -46,12 +48,15 @@ export default function App() {
             }
           }
           
-          // targetAvg 점수에 맞추어 mock answers 생성 (1~5점 척도 변환)
-          // averageScore = (avgVal - 1) * 25 => avgVal = (targetAvg / 25) + 1
-          const mockVal = (targetAvg / 25) + 1;
+          // Generate mock answers so that targetTypeIndex gets the highest score
           const mockAnswers: Record<number, AnswerData> = {};
-          survey.questions.forEach((_, idx) => {
-            mockAnswers[idx] = { value: Math.max(1, Math.min(5, Math.round(mockVal))), latencyMs: 1200 };
+          survey.questions.forEach((q, idx) => {
+            // If the question belongs to the target category (c is 1-indexed)
+            if (q.c === targetTypeIndex + 1) {
+              mockAnswers[idx] = { value: 5, latencyMs: 1200 };
+            } else {
+              mockAnswers[idx] = { value: 1, latencyMs: 1200 };
+            }
           });
 
           setActiveSurvey(survey);

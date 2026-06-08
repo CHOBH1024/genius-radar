@@ -65,7 +65,7 @@ export const TeamSynergyDashboard = ({ onBack }: { onBack: () => void }) => {
           <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md">
             <h3 className="font-bold text-slate-900 dark:text-white mb-4">팀 구성원 (5명)</h3>
             <ul className="space-y-3">
-              {['김팀장 (A-Mirror)', '이수석 (T-Mirror)', '박책임 (C-Mirror)', '최선임 (S-Mirror)', '정사원 (G-Mirror)'].map((member, i) => (
+              {['김팀장 (직관적 비저너리)', '이수석 (디테일 최적화 장인)', '박책임 (논리적 문제해결사)', '최선임 (무한동력 아이디어 뱅크)', '정사원 (압도적 불도저)'].map((member, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <div className="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center font-bold text-xs">{member[0]}</div>
                   {member}

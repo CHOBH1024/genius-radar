@@ -34,7 +34,7 @@ export const ColumnLounge = ({ onBack }: ColumnLoungeProps) => {
         <section className="text-center pt-8 pb-4">
           <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
             커리어 성장의 모든 지식,<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Mirror Insight Lounge</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Genius Radar Lounge</span>
           </h1>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto word-keep leading-relaxed">
             심계측학, 데이터 사이언스, 그리고 조직 심리학이 결합된 전문적인 통찰을 제공합니다. 당신의 숨겨진 잠재력을 발견하고 커리어를 가속화할 지식들을 만나보세요.

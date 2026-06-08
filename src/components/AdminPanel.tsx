@@ -12,7 +12,7 @@ export const AdminPanel = ({ onBack }: { onBack: () => void }) => {
             <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2 md:gap-3">
               <Activity className="text-rose-500 w-6 h-6 md:w-8 md:h-8" /> 조직 진단 어드민 패널
             </h1>
-            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">HR 담당자 전용: 전사 Mirror Insight 현황</p>
+            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">HR 담당자 전용: 전사 Genius Radar 현황</p>
           </div>
         </div>
         <div className="w-full sm:w-auto bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 font-mono text-xs md:text-sm shadow-sm text-center sm:text-left">
@@ -24,7 +24,7 @@ export const AdminPanel = ({ onBack }: { onBack: () => void }) => {
         {[
           { title: '전체 임직원 진단율', value: '82%', desc: '1,240 / 1,500 명 완료', icon: Users, color: 'text-blue-500', bg: 'bg-blue-100 dark:bg-blue-900/30' },
           { title: '조직 평균 신뢰도 (Reliability)', value: '94점', desc: '전월 대비 +2점 상승', icon: Activity, color: 'text-emerald-500', bg: 'bg-emerald-100 dark:bg-emerald-900/30' },
-          { title: '최다 보유 Mirror', value: 'A-Mirror', desc: '성취 및 실행력 (34%)', icon: TrendingUp, color: 'text-amber-500', bg: 'bg-amber-100 dark:bg-amber-900/30' },
+          { title: '최다 보유 성향', value: '직관적 비저너리', desc: '통찰 및 창의 (34%)', icon: TrendingUp, color: 'text-amber-500', bg: 'bg-amber-100 dark:bg-amber-900/30' },
         ].map((stat, i) => (
           <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
             <div className={`p-4 rounded-2xl ${stat.bg} ${stat.color}`}>
