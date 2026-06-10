@@ -34,10 +34,10 @@ const CARD_PATTERNS = [
 ];
 
 const VIRAL_PHRASES = [
-  (p: string) => `나 오늘 Genius Radar 해봤는데 "${p}" 나왔어 ㅋㅋ 너무 소름 🤯 너도 해봐`,
-  (p: string) => `"${p}" 판정받고 팩폭 실화냐... 완전 내 얘기잖아 😭 genius-radar.vercel.app`,
+  (p: string) => `지니어스 레이더 결과 "${p}" 나왔어 🧠 너 천재 유형은 뭐야?`,
+  (p: string) => `다중지능으로 분석한 내 천재성: "${p}" 💡 완전 소름... 맞아 genius-radar.vercel.app`,
+  (p: string) => `IQ 말고 진짜 천재성 → ${p} ✨ genius-radar.vercel.app`,
   (p: string) => `친구야 나 "${p}" 천재래 ㅋㅋㅋ 너는 뭐 나오는지 해봐 → genius-radar.vercel.app`,
-  (p: string) => `단점을 뒤집으면 천재성이라구 🙅 Genius Radar에서 "${p}" 받음 완전 신기 해봐요`,
 ];
 
 const CELEB_ARCHETYPES = [
@@ -208,7 +208,7 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
 
   const handleTwitterShare = () => {
     const text = encodeURIComponent(`나는 "${resultData.persona}" 유형!\n"${resultData.headline}"\n\n당신은 어떤 유형인지 알아보세요 👇`);
-    const tags = encodeURIComponent('GeniusRadar,다중지능,천재성발견');
+    const tags = encodeURIComponent('지니어스레이더,다중지능,천재유형,성향테스트,천재성발굴');
     window.open(`https://twitter.com/intent/tweet?text=${text}&hashtags=${tags}&url=${encodeURIComponent('https://genius-radar.vercel.app')}`, '_blank');
   };
 
