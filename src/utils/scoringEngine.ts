@@ -66,15 +66,15 @@ export function calculateScores(survey: SurveyConfig, answers: Record<number, An
   reliabilityScore = Math.max(0, Math.min(100, reliabilityScore));
 
   const averageScore = answeredCount > 0 ? totalScore / answeredCount : 0;
-  const categoryScores = [1, 2, 3, 4, 5, 6].map(cat => 
-    categoryCounts[cat] > 0 ? categoryTotals[cat] / categoryCounts[cat] : 0
-  );
 
-  // 11. Advanced Weighting: Example Synergy (e.g., if Cat 1 and Cat 2 are both high, boost Cat 1 slightly)
-  const synergyBonuses = [];
-  if (categoryScores[0] > 70 && categoryScores[1] > 70) {
-    synergyBonuses.push({ category: 1, bonus: 5 });
-  }
+  // Dynamic category count — supports any number of categories (9 for genius-radar)
+  const numCategories = survey.categories.length || Math.max(...Object.keys(categoryTotals).map(Number), 0);
+  const categoryScores = Array.from({ length: numCategories }, (_, i) => {
+    const cat = i + 1;
+    return categoryCounts[cat] > 0 ? categoryTotals[cat] / categoryCounts[cat] : 0;
+  });
+
+  const synergyBonuses: { category: number, bonus: number }[] = [];
 
   return {
     averageScore,
@@ -84,26 +84,6 @@ export function calculateScores(survey: SurveyConfig, answers: Record<number, An
   };
 }
 
-export function calculateLeadershipFit(scores: number[], role: 'Executive' | 'TeamLeader' | 'Specialist'): { score: number, risk: string } {
-  // Mock logic based on category scores
-  const avg = scores.reduce((a, b) => a + b, 0) / Math.max(scores.length, 1);
-  if (role === 'Executive') {
-    return {
-      score: Math.min(100, avg * 1.1),
-      risk: avg < 60 ? '비전 부재 및 실행력 저하 우려' : '낮음'
-    };
-  }
-  if (role === 'TeamLeader') {
-    return {
-      score: Math.min(100, avg * 1.05),
-      risk: scores[1] < 50 ? '팀원과의 소통 갈등 우려' : '낮음'
-    };
-  }
-  return {
-    score: avg,
-    risk: '개인 성과 위주로 협업 리스크 존재'
-  };
-}
 
 export function calculateCultureFit(scores: number[], companyProfile: number[]): number {
   // Calculate euclidean distance or simple diff
