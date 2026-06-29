@@ -3,21 +3,27 @@
 
 @theme {
   --font-sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --color-brand-bg: #0d0d1a;
+  --color-brand-card: #1a1035;
+  --color-brand-text: #f3f0ff;
+  --color-brand-text-muted: #c084fc;
+  --color-brand-primary: #7c3aed;
+  --color-brand-secondary: #f59e0b;
+  --color-brand-accent: #ec4899;
+  --color-brand-success: #10b981;
+  --color-brand-warning: #ef4444;
 }
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 font-sans transition-colors duration-300 antialiased selection:bg-pink-500/30;
+    @apply bg-brand-bg text-brand-text font-sans transition-colors duration-300 antialiased selection:bg-brand-accent/30;
     /* Prevent bouncy scrolling on mobile for a native app feel */
     overscroll-behavior-y: none;
-  }
-  .dark body {
-    @apply bg-slate-950 text-slate-200;
   }
   
   /* Responsive container: full-width */
   #root {
-    @apply min-h-[100dvh] flex flex-col w-full relative bg-white;
+    @apply min-h-[100dvh] flex flex-col w-full relative bg-brand-bg;
   }
 }
 
@@ -48,11 +54,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/70 backdrop-blur-2xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300;
-  }
-  
-  .dark .glass-card {
-    @apply bg-slate-900/50 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+    @apply bg-brand-card/60 backdrop-blur-2xl border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300;
   }
   
   .story-progress-bar {
@@ -78,3 +80,4 @@
 .animate-gradient-xy {
   animation: gradient-xy 15s ease infinite;
 }
+

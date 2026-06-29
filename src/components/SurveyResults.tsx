@@ -9,6 +9,7 @@ import { motion, AnimatePresence, useDragControls } from 'motion/react';
 import { QRCodeSVG } from 'qrcode.react';
 import { useSwipeable } from 'react-swipeable';
 import confetti from 'canvas-confetti';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 // ============================================================
 // 데이터 상수 (21 기능용)
@@ -340,20 +341,18 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
             </div>
           </div>
 
-          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }} className="relative z-10 w-full">
-            <div className="w-full rounded-[1.5rem] bg-black/20 border border-white/10 px-4 py-3">
-              <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.15em] mb-2">🧠 {survey.categories.length}개 지능 분석</p>
-              <div className="space-y-1.5">
-                {[...radarData].sort((a, b) => b.A - a.A).map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <span className="text-[10px] font-black shrink-0 w-16 text-right leading-tight" style={{ color: idx === 0 ? cardTheme.from : 'rgba(255,255,255,0.38)' }}>{item.subject}</span>
-                    <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full rounded-full" style={{ width: `${item.A}%`, background: idx === 0 ? cardTheme.from : idx < 3 ? `${cardTheme.to}55` : 'rgba(255,255,255,0.18)' }} />
-                    </div>
-                    <span className="text-[10px] font-black w-6 text-right" style={{ color: idx === 0 ? cardTheme.from : 'rgba(255,255,255,0.28)' }}>{item.A}</span>
-                    {idx === 0 && <span className="text-[8px] font-black px-1 py-0.5 rounded-full shrink-0" style={{ color: cardTheme.from, background: `${cardTheme.from}20`, border: `1px solid ${cardTheme.from}30` }}>▲</span>}
-                  </div>
-                ))}
+          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }} className="relative z-10 w-full mt-4">
+            <div className="w-full rounded-[1.5rem] bg-black/40 border border-white/20 p-4 backdrop-blur-md">
+              <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.15em] mb-4 text-center">🧠 9각형 천재성 레이더 차트</p>
+              <div className="h-64 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
+                    <PolarGrid stroke="rgba(255,255,255,0.2)" />
+                    <PolarAngleAxis dataKey="subject" tick={{ fill: 'rgba(255,255,255,0.8)', fontSize: 10, fontWeight: 'bold' }} />
+                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                    <Radar name="지능 스코어" dataKey="A" stroke={cardTheme.from} fill={cardTheme.from} fillOpacity={0.5} strokeWidth={2} />
+                  </RadarChart>
+                </ResponsiveContainer>
               </div>
             </div>
           </motion.div>
@@ -400,6 +399,14 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
           </div>
         </section>
 
+        {/* ── 진단 요약 ── */}
+        {resultData.description && (
+          <section className="rounded-[2.5rem] border border-white/10 p-6 bg-white/5 backdrop-blur-3xl shadow-xl">
+            <h2 className="text-white font-black text-sm mb-4 flex items-center gap-2">📋 진단 요약</h2>
+            <p className="text-white/90 font-bold text-sm leading-relaxed word-keep" style={{ whiteSpace: 'pre-line' }}>{resultData.description}</p>
+          </section>
+        )}
+
         {/* ── 핵심 강점 전체 ── */}
         {resultData.strengths && resultData.strengths.length > 0 && (
           <section className="rounded-[2.5rem] border border-white/10 p-6 bg-white/5 backdrop-blur-3xl shadow-xl">
@@ -441,6 +448,65 @@ export const SurveyResults = ({ survey, answers, onRestart, onHome }: SurveyResu
               🎯 성장 처방
             </h2>
             <p className="text-white/90 font-bold text-sm leading-relaxed word-keep">{resultData.advice}</p>
+          </section>
+        )}
+
+        {/* ── 지능 조합 분석 & 최적 직무 ── */}
+        {resultData.jobComboTitle && (
+          <section className="rounded-[2.5rem] border border-white/10 p-6 bg-white/5 backdrop-blur-3xl shadow-xl">
+            <h2 className="text-white font-black text-sm mb-5 flex items-center gap-2">
+              🧬 제1·제2 지능 조합 분석
+            </h2>
+            <div className="bg-brand-accent/10 border border-brand-accent/20 rounded-3xl p-5 mb-4">
+              <p className="text-brand-accent text-xs font-black mb-2 tracking-wide uppercase">{resultData.jobComboTitle}</p>
+              <p className="text-white/90 font-bold text-sm leading-relaxed word-keep">{resultData.jobCombination}</p>
+            </div>
+            {resultData.jobComboJobs && resultData.jobComboJobs.length > 0 && (
+              <div>
+                <p className="text-white/50 text-[10px] font-black uppercase mb-3">추천 시너지 직업군</p>
+                <div className="flex flex-wrap gap-2">
+                  {resultData.jobComboJobs.map((job: string, idx: number) => (
+                    <span key={idx} className="bg-white/10 text-white px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">
+                      {job}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* ── 최적 직무 TOP 5 ── */}
+        {resultData.topJobs && resultData.topJobs.length > 0 && (
+          <section className="rounded-[2.5rem] border border-white/10 p-6 bg-white/5 backdrop-blur-3xl shadow-xl">
+            <h2 className="text-white font-black text-sm mb-5 flex items-center gap-2">
+              💼 천재성 발현 최적 직무 TOP 5
+            </h2>
+            <div className="space-y-3">
+              {resultData.topJobs.map((job: string, idx: number) => (
+                <div key={idx} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-3 hover:bg-white/10 transition-colors">
+                  <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black shrink-0" style={{ background: `linear-gradient(135deg, ${cardTheme.from}, ${cardTheme.to})`, color: 'white' }}>{idx + 1}</span>
+                  <p className="text-white font-bold text-sm">{job}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── 나만의 천재 학습법 ── */}
+        {resultData.learningMethods && resultData.learningMethods.length > 0 && (
+          <section className="rounded-[2.5rem] border border-blue-500/20 p-6 bg-blue-500/5 backdrop-blur-3xl shadow-xl">
+            <h2 className="text-white font-black text-sm mb-5 flex items-center gap-2">
+              📖 나만의 천재 학습법 3가지
+            </h2>
+            <div className="space-y-3">
+              {resultData.learningMethods.map((method: string, idx: number) => (
+                <div key={idx} className="bg-blue-500/10 border border-blue-500/20 rounded-3xl p-4 flex gap-3">
+                  <span className="text-blue-400 text-lg">💡</span>
+                  <p className="text-white/90 font-bold text-sm leading-relaxed word-keep">{method}</p>
+                </div>
+              ))}
+            </div>
           </section>
         )}
 

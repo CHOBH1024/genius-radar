@@ -41,11 +41,18 @@ export interface SurveyResultContent {
     emoji: string;
     description: string;
   };
-  leadershipFit: {
-    role: string;
-    score: number;
-    risk: string;
-  }[];
+  // 커스텀 필드
+  prescriptions?: string[]; // 번아웃용 4단계 처방전
+  environmentCondition?: string; // 번아웃용 직장 환경 조건
+  jobCombination?: string; // 다중지능용 조합 분석 결과
+  jobComboTitle?: string; // 다중지능용 조합명
+  jobComboJobs?: string[]; // 다중지능용 조합별 최적 직업군 3가지
+  topJobs?: string[]; // 다중지능용 최적 직무 TOP 5
+  learningMethods?: string[]; // 다중지능용 천재 학습법 3가지
+  lossScenario?: string; // FX용 손실 시나리오
+  tradingStrategies?: string[]; // FX용 3단계 편향 교정 트레이딩 전략
+  mindControls?: string[]; // FX용 마인드 컨트롤 3가지 실천 수칙
+  fxStyle?: string; // FX용 나에게 맞는 외환 투자 스타일
 }
 
 export interface SurveyConfig {
